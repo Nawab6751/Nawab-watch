@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAWAB-WATCH | GLOBAL VULNERABILITY GUARD</title>
+    <style>
+        body { background: #000; color: #ff3333; font-family: 'Courier New', monospace; margin: 0; overflow: hidden; }
+        #canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15; }
+        
+        /* 🛡️ Privacy Shield Header */
+        .top-bar { background: #ff3333; color: #000; padding: 5px 20px; font-weight: bold; font-size: 0.8rem; display: flex; justify-content: space-between; box-shadow: 0 0 20px #ff3333; }
+        
+        .main-grid { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 15px; padding: 20px; height: 90vh; }
+        .panel { border: 1px solid #ff3333; background: rgba(10, 0, 0, 0.9); padding: 15px; position: relative; overflow: hidden; }
+        
+        .header { font-size: 1rem; border-bottom: 1px solid #ff3333; padding-bottom: 5px; margin-bottom: 10px; color: #fff; text-shadow: 0 0 10px #ff3333; }
+        
+        /* 🌍 The News-Worthy Map */
+        .map-area { height: 300px; border: 1px dashed #ff3333; position: relative; background: radial-gradient(circle, #200 0%, #000 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .ping { position: absolute; width: 10px; height: 10px; background: #ff3333; border-radius: 50%; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(4); opacity: 0; } }
+
+        .log-box { font-size: 0.7rem; height: 200px; overflow-y: auto; color: #ff9999; }
+        .status-badge { display: inline-block; padding: 2px 8px; background: #00ff41; color: #000; font-size: 0.6rem; font-weight: bold; margin-bottom: 10px; }
+
+        .btn-guard { width: 100%; padding: 12px; background: #ff3333; color: #000; border: none; cursor: pointer; font-weight: bold; font-family: inherit; margin-top: 10px; }
+        .btn-guard:hover { background: #fff; box-shadow: 0 0 20px #fff; }
+
+        .footer-line { position: fixed; bottom: 0; width: 100%; background: #111; color: #555; font-size: 0.6rem; padding: 5px; text-align: center; }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <div class="top-bar">
+        <span>STATUS: STEALTH ACTIVE</span>
+        <span>ENCRYPTION: AES-256 (MILITARY GRADE)</span>
+        <span>COMMANDER: NAWAB ZADA</span>
+    </div>
+
+    <div class="main-grid">
+        <div class="panel">
+            <div class="header">THREAT DETECTION</div>
+            <div class="status-badge">AI MONITORING LIVE</div>
+            <div class="log-box" id="threat-logs">
+                [SYSTEM]: Booting Nawab-Watch...<br>
+                [SCAN]: Identifying Open Ports...<br>
+                [ALERT]: Vulnerability found in Node_DE_99
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="header">GLOBAL VULNERABILITY MAP (LIVE)</div>
+            <div class="map-area" id="map">
+                <div style="color: #444; font-size: 0.8rem; z-index: 10;">SCANNING GLOBAL SERVERS...</div>
+            </div>
+            <div style="margin-top: 10px; font-size: 0.7rem; color: #aaa;">
+                Targeting: Weak Industrial Firewalls | Status: Passive Warning Sent
+            </div>
+            <button class="btn-guard" onclick="startGlobalGuard()">START GLOBAL PROTECTION</button>
+        </div>
+
+        <div class="panel">
+            <div class="header">ANONYMITY LAYER</div>
+            <div style="font-size: 0.7rem;">
+                [VPN]: Nawab-Tunnel-v4<br>
+                [IP-HOP]: Singapore -> Berlin -> Zurich<br>
+                [TRACE]: <span style="color: #00ff41;">IMPOSSIBLE</span>
+            </div>
+            <hr style="border: 0.5px solid #333; margin: 15px 0;">
+            <div style="font-size: 0.65rem; line-height: 1.4; color: #fff;">
+                <strong>HERO LOG:</strong><br>
+                This tool detects security holes to help the world, not to harm. Nawab Zada is the guardian of the digital realm.
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-line">
+        PROPERTY OF NAWAB ZADA | FOR ETHICAL USE ONLY | NEWS MEDIA AUTHORIZED TO REPORT
+    </div>
+
+    <script>
+        // Matrix Background
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const letters = "NAWABZADA0101";
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#f33"; ctx.font = fontSize + "px arial";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 33);
+
+        // Ping Generator (The News-Worthy Visual)
+        function createPing() {
+            const map = document.getElementById('map');
+            const ping = document.createElement('div');
+            ping.className = 'ping';
+            ping.style.left = Math.random() * 90 + '%';
+            ping.style.top = Math.random() * 90 + '%';
+            map.appendChild(ping);
+            setTimeout(() => ping.remove(), 1500);
+        }
+        setInterval(createPing, 2000);
+
+        function startGlobalGuard() {
+            const logs = document.getElementById('threat-logs');
+            logs.innerHTML += "<br><span style='color:#fff'>[!] SENDING SECURITY ALERTS TO NODES...</span>";
+            setTimeout(() => {
+                logs.innerHTML += "<br>[SUCCESS]: 142 Systems Secured by Nawab Zada.";
+                alert("Global Protection Protocol Initialized. You are the hero the internet needs.");
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
